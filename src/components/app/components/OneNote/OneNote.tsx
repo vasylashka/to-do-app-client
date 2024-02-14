@@ -19,11 +19,14 @@ function OneNote({
   isDeleted,
   setIsDeleted,
 }: OneNoteProps) {
+  
+  const { title, description, creationDate, dueDate, status } = task;
+
   return (
     <div className="body-of-note">
       <div className="context">
         <div className="context-title">
-          <p className="title">{task.title}</p>
+          <p className="title">{title}</p>
           <div className="more">
             <BasicMenu
               currentTask={task}
@@ -35,14 +38,14 @@ function OneNote({
           </div>
         </div>
         <div className="description">
-          <p className="text-description">{task.description}</p>
+          <p className="text-description">{description}</p>
         </div>
         <div className="dates">
-          <p>{"Creation date: " + task.creationDate.format("DD/MM/YYYY")}</p>
-          <p>{"Due date: " + task.dueDate.format("DD/MM/YYYY")}</p>
+          <p>{"Creation date: " + creationDate.format("DD/MM/YYYY")}</p>
+          <p>{"Due date: " + dueDate.format("DD/MM/YYYY")}</p>
         </div>
         <div>
-          <AutocompleteBox defaults={task.status} task={task} />
+          <AutocompleteBox defaults={status} task={task} />
         </div>
       </div>
     </div>
