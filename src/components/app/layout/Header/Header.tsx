@@ -1,12 +1,17 @@
 import { Button } from "@mui/material";
 import "./Header.css";
-import PopUpWindow from "../PopUpWindow/PopUpWindow";
+import PopUpWindow from "../../components/PopUpWindow/PopUpWindow";
 import dayjs from "dayjs";
 import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
-import { Task } from "../TaskModels/TaskModel";
+import { Task } from "../../../../models/Task/TaskModel";
 
-function Header() {
+interface headerProps {
+  isCreated: boolean;
+  setIsCreated: (tmp: boolean) => void;
+}
+
+function Header({ isCreated, setIsCreated }: headerProps) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -41,6 +46,8 @@ function Header() {
           open={open}
           operationName="Create"
           handleClose={handleClose}
+          isRequested={isCreated}
+          setIsRequested={setIsCreated}
         ></PopUpWindow>
       </div>
     </div>

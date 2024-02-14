@@ -1,5 +1,5 @@
 import { Dayjs } from "dayjs";
-import { Task } from "../TaskModels/TaskModel";
+import { Task } from "../../../models/Task/TaskModel";
 
 export var Created = true;
 

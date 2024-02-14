@@ -1,0 +1,9 @@
+.manageAllNotes{
+    columns: 2;
+}
+  
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

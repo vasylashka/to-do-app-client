@@ -6,7 +6,11 @@ import { List } from "@mui/material";
 import ListOfNotes from "../ListOfNotes/ListOfNotes";
 import { useState } from "react";
 
-function Content() {
+interface ContentProps {
+  isCreated: boolean;
+}
+
+function Content({ isCreated }: ContentProps) {
   const [clickedIndexTODO, setClickedIndexTODO] = useState(false);
   const [clickedIndexIN, setClickedIndexIN] = useState(false);
   const [clickedIndexDONE, setClickedIndexDONE] = useState(false);
@@ -47,6 +51,7 @@ function Content() {
           toDo={clickedIndexTODO}
           inProgress={clickedIndexIN}
           done={clickedIndexDONE}
+          isCreated={isCreated}
         />
       </div>
     </div>

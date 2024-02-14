@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ListOfNotes from "../ListOfNotes/ListOfNotes";
-import { fetchTasks } from "../TaskModels/TaskProvider";
+import ListOfNotes from "../components/ListOfNotes/ListOfNotes";
+import { fetchTasks } from "../../../models/Task/TaskProvider";
 
 export const handleDelete = (taskId: number) => {
   fetch(`http://localhost:5161/api/Task/${taskId}`, {

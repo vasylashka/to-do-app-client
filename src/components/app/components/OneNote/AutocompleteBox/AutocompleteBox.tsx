@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import "./AutocompleteBox.css";
-import { Task } from "../TaskModels/TaskModel";
-import { handleUpdate } from "../Database requests/UpdateRequest";
+import { Task } from "../../../../../models/Task/TaskModel";
+import { handleUpdate } from "../../../requests/UpdateRequest";
 
 // Define the options for Autocomplete
 const options = ["TO DO", "IN PROGRESS", "DONE"];

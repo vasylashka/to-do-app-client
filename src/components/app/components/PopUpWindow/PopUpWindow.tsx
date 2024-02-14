@@ -12,15 +12,22 @@ import "./PopUpWindow.css";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Dayjs } from "dayjs";
-import { Task } from "../TaskModels/TaskModel";
-import { Create } from "../Database requests/PostRequest";
-import { handleUpdate } from "../Database requests/UpdateRequest";
+import { Task } from "../../../../models/Task/TaskModel";
+import { Create } from "../../requests/PostRequest";
+import { handleUpdate } from "../../requests/UpdateRequest";
+import {
+  validateTitle,
+  validateDescription,
+  validateDate,
+} from "./FieldValidation";
 
 interface PopUpWindowProps {
   currentTask: Task;
   open: boolean;
   operationName: string;
   handleClose: () => void;
+  isRequested: boolean;
+  setIsRequested: (tmp: boolean) => void;
 }
 
 function PopUpWindow({
@@ -28,15 +35,17 @@ function PopUpWindow({
   open,
   operationName,
   handleClose,
+  isRequested,
+  setIsRequested,
 }: PopUpWindowProps) {
-  //title field
+  //handle title field changes
   const [titleFieldValue, setTitleFieldValue] = useState(currentTask.title);
   const handleTitleFieldChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setTitleFieldValue(event.target.value);
   };
-  //description field
+  //handle description field changes
   const [descriptionFieldValue, setDescriptionFieldValue] = useState(
     currentTask.description
   );
@@ -45,31 +54,44 @@ function PopUpWindow({
   }) => {
     setDescriptionFieldValue(event.target.value);
   };
-  //due date field
+  //handle due date field changes
   const [dateFieldValue, setDateFieldValue] = useState<Dayjs | null>(
     currentTask.dueDate
   );
   const handleDateFieldChange = (date: Dayjs | null) => {
     setDateFieldValue(date);
   };
-
+  // handle create/edit operations
   const handleSubmit = (event: { preventDefault: () => void }) => {
+    //validate
+    const titleValid = validateTitle(titleFieldValue, setTitleError);
+    const descriptionValid = validateDescription(
+      descriptionFieldValue,
+      setDateError
+    );
+    const dateValid = validateDate(
+      currentTask.creationDate,
+      setDateError,
+      dateFieldValue
+    );
+
+    //apply changes
     event.preventDefault();
     currentTask.title = titleFieldValue;
     currentTask.description = descriptionFieldValue;
     if (dateFieldValue) {
       currentTask.dueDate = dateFieldValue;
     }
-    const titleValid = validateTitle();
-    const descriptionValid = validateDescription();
-    const dateValid = validateDate();
+
     if (titleValid && descriptionValid && dateValid) {
       if (operationName === "Create") {
         Create(currentTask);
+        setIsRequested(!isRequested);
       }
       if (operationName === "Edit") {
         if (currentTask.id) {
           handleUpdate(currentTask, currentTask.id);
+          setIsRequested(!isRequested);
         }
       }
       handleClose();
@@ -78,40 +100,10 @@ function PopUpWindow({
 
   //validation of title
   const [titleError, setTitleError] = useState(false);
-
-  const validateTitle = () => {
-    if (!titleFieldValue) {
-      setTitleError(true);
-      return false;
-    } else {
-      setTitleError(false);
-      return true;
-    }
-  };
   //validation of description
   const [descriptionError, setDescriptionError] = useState(false);
-
-  const validateDescription = () => {
-    if (!descriptionFieldValue) {
-      setDescriptionError(true);
-      return false;
-    } else {
-      setDescriptionError(false);
-      return true;
-    }
-  };
   // validation of due date
   const [dateError, setDateError] = useState(false);
-
-  const validateDate = () => {
-    if (dateFieldValue?.isBefore(currentTask.creationDate)) {
-      setDateError(true);
-      return false;
-    } else {
-      setDateError(false);
-      return true;
-    }
-  };
 
   return (
     <div>

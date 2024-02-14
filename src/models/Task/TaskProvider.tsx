@@ -1,6 +1,6 @@
 // api.js
 import dayjs from "dayjs";
-import { Task } from "../TaskModels/TaskModel";
+import { Task } from "./TaskModel";
 
 const API_URL = "http://localhost:5161/api/Task";
 

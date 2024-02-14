@@ -7,15 +7,25 @@ import EditIcon from "@mui/icons-material/Edit";
 import "./BasicMenu.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
-import PopUpWindow from "../PopUpWindow/PopUpWindow";
-import { Task } from "../TaskModels/TaskModel";
-import { handleDelete } from "../Database requests/DeleteRequest";
+import PopUpWindow from "../../PopUpWindow/PopUpWindow";
+import { Task } from "../../../../../models/Task/TaskModel";
+import { handleDelete } from "../../../requests/DeleteRequest";
 
 interface BasicMenuProps {
   currentTask: Task;
+  isEdited: boolean;
+  setIsEdited: (tmp: boolean) => void;
+  isDeleted: boolean;
+  setIsDeleted: (tmp: boolean) => void;
 }
 
-export default function BasicMenu({ currentTask }: BasicMenuProps) {
+export default function BasicMenu({
+  currentTask,
+  isEdited,
+  setIsEdited,
+  isDeleted,
+  setIsDeleted,
+}: BasicMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -81,13 +91,18 @@ export default function BasicMenu({ currentTask }: BasicMenuProps) {
                 open={openButton}
                 operationName="Edit"
                 handleClose={handleCloseButton}
+                isRequested={isEdited}
+                setIsRequested={setIsEdited}
               />
             </div>
           </Button>
         </MenuItem>
         <MenuItem>
           <Button
-            onClick={() => handleDeleteButton(currentTask.id)}
+            onClick={() => {
+              handleDeleteButton(currentTask.id);
+              setIsDeleted(!isDeleted);
+            }}
             sx={{
               "&.MuiButton-text": { color: "#3D3C42" },
             }}

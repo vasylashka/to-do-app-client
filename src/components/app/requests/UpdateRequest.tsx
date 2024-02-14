@@ -1,4 +1,4 @@
-import { Task } from "../TaskModels/TaskModel";
+import { Task } from "../../../models/Task/TaskModel";
 
 interface taskObject {
   title: string;
