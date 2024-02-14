@@ -1,0 +1,13 @@
+p{
+    padding-left: 10px;
+    margin:0;
+}
+.option{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.text{
+    margin-bottom: 0;
+    font-size: 15px;
+}

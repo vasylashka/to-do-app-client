@@ -1,0 +1,38 @@
+.flex-container{
+    display:flex;
+    padding-top: 96px;
+    align-items: stretch;
+    
+}
+.side-bar{
+    height: 100;
+    flex:1;
+}
+.main{
+    flex:4;
+}
+img{
+    position:fixed;
+    left: 20px;
+    bottom: 0;
+}
+
+h1{
+    height: 100vh;
+}
+
+.filter{
+    margin:50px;
+    margin-top:100px;
+    margin-left: 35px;
+    display: flex;
+    flex-direction: column;
+    position:fixed;
+    gap: 10px;
+}
+
+.filter > h2{
+    font-family: 'Verdana';
+    font-size: 25px;
+}
+

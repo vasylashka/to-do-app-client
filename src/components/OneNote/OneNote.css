@@ -1,0 +1,50 @@
+.body-of-note{
+    background-color: #F7E6C4;
+    height:fit-content;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.context{
+    margin: 0;
+    padding: 20px;
+}
+
+.context-title{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    color: #3D3C42;
+}
+
+.title{
+    padding-left: 20px;
+    margin:0;
+    font-family: "Verdana";
+    font-size: 20px;
+    max-width: 320px;
+    word-wrap: break-word;
+    font-weight: bold;
+    color: #3D3C42;
+}
+.more{
+    padding-right: 20px;
+}
+.text-description{
+    font-family: "Verdana";
+    text-align: justify;
+    text-indent: 10px;
+    color: #3D3C42;
+}
+.dates{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Verdana";
+    font-size: 14px;
+    color: #3D3C42;
+}

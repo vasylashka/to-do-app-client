@@ -1,0 +1,15 @@
+.buttons{
+    display: flex;
+    justify-content: space-around;
+}
+.first-textfield{
+    margin-top: 10px ;
+}
+.date-pickers{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.custom-dialog-background{
+    background-color: #FAF3F0;
+}

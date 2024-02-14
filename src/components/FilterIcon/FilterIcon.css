@@ -1,0 +1,23 @@
+.circle{
+    display: inline;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    padding-bottom: 5px;
+}
+
+.green{
+    background-color: #D4E2D4;
+}
+.pink{
+    background-color: #FFCACC;
+}
+.purple{
+    background-color: #DBC4F0;
+}
+.text{
+    display: inline;
+    font-size: 20px;
+    margin:0;
+    padding-left: 10px;
+}

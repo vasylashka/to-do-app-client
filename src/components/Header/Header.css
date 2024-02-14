@@ -1,0 +1,31 @@
+.container-header{
+    position: fixed;
+    z-index: 999;
+    right:0;
+    left:0;
+    
+    height:96px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    display:flex;
+    flex-direction: row;
+    background-color: #FAF3F0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.site-name{
+    font-family: 'Verdana';
+    color: #3D3C42;
+    font-size: 40px;
+}
+.add-icon{
+    padding-top: 4px;
+}
+
+
+
+
